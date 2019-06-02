@@ -1,0 +1,16 @@
+version: '3'
+services:
+  orders-app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: "order-api:latest"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "mongodb"
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    ports:
+      - "27017"
